@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css" ></link>
+    <title>Document</title>
+</head>
+<body style="overflow-y: hidden; overflow-x :  hidden; background-color: #FAFBFD;">
+
+
+    
+
+
+    <header id="demo-header"> <div class="left"> <a href="index.html"> <h1><span>Back</span></h1> </a>
+        <ul class="selector">
+            <li class="active" id="pc" data-width="auto" data-height="auto">Desktop</li>
+            <li id="tablet" data-width="1040" data-height="668">Tablet</li>
+            <li id="tablet-portrait" data-width="788" data-height="668">Tablet (Portrait)</li>
+            <li id="mobile" data-width="350" data-height="568">Mobile</li>
+        </ul>
+    </header>
+
+<div style="display:flex;justify-content: center;">
+    <div id="frame-wrapper" style="
+  
+    /* height:100vh; */
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 2rem; */
+    margin: 5rem;
+    border: 1px solid grey;
+    border-radius: 35px;
+    background-color: white;
+
+">
+        <iframe  style="overflow-x: hidden;   border: 1px solid grey;" id="your_site" src=""> </iframe>
+    </div>
+    </div>
+    
+
+
+
+    
+        <script>
+
+        let wrapper = document.getElementById("demo-header");
+        let iframe = document.getElementById("your_site");
+        let frameWrapper =  document.getElementById("frame-wrapper");
+        let path  = window.location.search.split("=")[1];
+        iframe.src = "/" + path + "/index.html" //        /massively/index.html
+        iframe.style.width = "100vw"
+        iframe.style.height = "100vh"
+        iframe.style.overflowX = "hidden"
+        iframe.style.overflowY = "hidden"
+
+
+ 
+
+        wrapper.addEventListener("click" ,  (ev)=>{
+            let arr =  Array.from(wrapper.querySelectorAll("li"));
+            arr.forEach(el=>{
+               el.classList.remove("active");
+            })
+            event.target.classList.add("active");
+
+            if(event.target.id == "pc")
+            {
+                iframe.style.width =  "100vw";
+                iframe.style.height = "100vh";
+
+                frameWrapper.style.width = "100vw"
+                frameWrapper.style.height = "100vh"
+            }
+            else {
+                let width  = ev.target.getAttribute("data-width")
+                let height  = ev.target.getAttribute("data-height");
+                iframe.style.width =  width + "px";
+                iframe.style.height = height + "px";
+                frameWrapper.style.width = +width+100 + "px";
+                frameWrapper.style.height = +height+100 + "px"
+            }
+        })
+
+
+              let btn =  document.getElementById("test_smt");
+       btn.addEventListener("click" ,  (ev)=>{
+iframe.src = "stellar/index.html"
+       }) 
+
+    </script>
+    
+</body>
+</html>

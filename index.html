@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" ></link>
+    <script src="https://cdn.jsdelivr.net/npm/ractive"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+
+
+    <div id="wrapper" style="display:flex;justify-content: center;flex-direction: column;">
+   
+
+
+
+    <div style="padding:5rem; display:flex;justify-content:center">
+        <a href="preview.html?a=bbbb" >
+      <img
+        src="https://html5up.net/uploads/images/massively.jpg"
+        class="placeholder"
+        alt="" />
+        
+        <ul class="selector">
+            <li class="active" >Preview</li>
+        </ul>
+
+        </a>
+    </div>
+
+           <div style="padding:5rem">
+        <a href="preview.html?a=bbbb" >
+      <img
+        src="https://html5up.net/uploads/images/massively.jpg"
+        class="placeholder"
+        alt="" />
+        
+        <ul class="selector">
+            <li class="active" >Preview</li>
+        </ul>
+
+        </a>
+    </div>
+
+    </div>
+
+
+
+    <script>
+        var ractive = Ractive({
+            target: `#wrapper`,
+            template: `
+            {{#each templates }}
+                <div style="padding:5rem; display:flex;justify-content:center">
+                    <a href="preview.html?a={{this.name}}" >
+                    <img
+                        src="https://html5up.net/uploads/images/{{this.name}}.jpg"
+                        class="placeholder"
+                        alt="" />
+        
+                        <ul class="selector">
+                            <li class="active" >Preview</li>
+                        </ul>
+                    </a>
+                </div>
+            {{/each}}
+
+            
+            ` ,
+            data: { templates: [{name : "massively" } , {name : "stellar" } , {name : "forty" } , {name : "ethereal" }  ,  {name : "editorial" }    ],  }
+        });
+    </script>
+
+
+  </body>
+</html>
